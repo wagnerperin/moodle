@@ -23,6 +23,7 @@
  */
 
 require_once('../../config.php');
+require_once($CFG->dirroot . '/local/greetings/lib.php');
 
 require_login();
 
@@ -34,9 +35,9 @@ $PAGE->set_title(get_string('pluginname', 'local_greetings'));
 $PAGE->set_heading(get_string('pluginname', 'local_greetings'));
 
 if (isloggedin()) {
-    $usergreeting = 'Greetings, ' . fullname($USER);
+    $usergreeting = local_greetings_get_greeting($USER);
 } else {
-    $usergreeting = 'Greetings, user';
+    $usergreeting = get_string('greetinguser', 'local_greetings');
 }
 
 
